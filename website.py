@@ -11,8 +11,18 @@ from transformers import AutoModelForSequenceClassification, AutoTokenizer
 from transformers import TextClassificationPipeline
 import numpy as np
 
-model = AutoModelForSequenceClassification.from_pretrained("hersheys-baklava/IsraelPalestine-Bias-Detector")
-tokenizer = tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
+@st.cache_resource
+def load_model():
+  return AutoModelForSequenceClassification.from_pretrained("hersheys-baklava/IsraelPalestine-Bias-Detector")
+
+model = load_model()
+
+@st.cache_resource
+def load_tokenizer():
+  return AutoTokenizer.from_pretrained("bert-base-uncased")
+
+tokenizer = load_tokenizer()
+
 pipe = TextClassificationPipeline(model=model, tokenizer=tokenizer, return_all_scores=True)
 
 labels = ['-', "n", "+"] * 4
@@ -163,7 +173,7 @@ button {
     col1, col2 = st.columns([8,1])
     # Use the first column for text input
     with col1:
-        link=st.text_input("",placeholder="Enter a link", label_visibility="collapsed")
+        link=st.text_input(".",placeholder="Enter a link", label_visibility="collapsed")
     # Use the second column for the submit button
     with col2:
         enter = st.form_submit_button("Enter")
