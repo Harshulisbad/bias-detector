@@ -43,8 +43,7 @@ def classification(text, out):
   IsraelM=0
   classified = query({"inputs": text})
   scores = []
-  with col1:
-    st.success(classified)
+  st.success(classified)
   
   for label in classified[0]:
     scores.append(label["score"])
