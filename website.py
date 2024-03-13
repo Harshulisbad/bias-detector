@@ -43,7 +43,6 @@ def classification(text, out):
   IsraelM=0
   classified = query({"inputs": text})
   scores = [0]*12
-  st.success(classified)
   
   for label in classified[0]:
     if label['label'] == "PS0":
@@ -72,7 +71,6 @@ def classification(text, out):
       scores[11] = label['score']
 
   scores = np.array(scores)
-  st.success(scores)
   PS = np.argmax(scores[0:3])
   IS = np.argmax(scores[3:6])
   PM = np.argmax(scores[6:9])
