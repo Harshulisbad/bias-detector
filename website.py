@@ -41,7 +41,7 @@ def classification(text, out):
   PalestineM=0
   IsraelM=0
   st.success("got here")
-  classified = query({"inputs": text}
+  classified = query({"inputs": text})
   st.success("classified it")
   scores = []
   st.success(classified)
