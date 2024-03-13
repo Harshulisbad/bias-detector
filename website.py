@@ -24,8 +24,12 @@ def load_tokenizer():
 tokenizer = load_tokenizer()
 
 pipe = TextClassificationPipeline(model=model, tokenizer=tokenizer, return_all_scores=True)
-if pipe:
-  st.success("got piped")
+head = {"Authorization": f"Bearer {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}"}
+API_URL = "https://api-inference.huggingface.co/models/hersheys-baklava/IsraelPalestine-Bias-Detector"
+
+def query(payload):
+    response = requests.post(API_URL, headers=head, json=payload)
+    return response.json()
 
 labels = ['-', "n", "+"] * 4
 op = []
@@ -37,8 +41,9 @@ def classification(text, out):
   PalestineM=0
   IsraelM=0
   st.success("got here")
-  classified = pipe(text)
+  classified = query({"inputs": text}
   st.success("classified it")
+  st.success(classified)
   scores = []
   
   for label in classified[0]:
