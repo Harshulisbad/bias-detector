@@ -35,8 +35,9 @@ def classification(text, out):
   PalestineM=0
   IsraelM=0
   classified = pipe(text)
+  st.success("classified it")
   scores = []
-
+  
   for label in classified[0]:
     scores.append(label["score"])
 
@@ -88,7 +89,6 @@ def predict(url, value):
   totalList=[]
   depths = {}
   page = requests.get(url, headers=headers)
-  st.success("got the site")
   soup = BeautifulSoup(page.content,"html.parser")
   paragraphs = (soup.find_all("p"))
 
@@ -119,6 +119,7 @@ def predict(url, value):
     if (d == level):
       INP = p.get_text().strip()
       if INP != "":
+        st.success("started classifying")
         final=classification(INP, value)
         list1.append(final[0])
         list2.append(final[1])
