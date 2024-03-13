@@ -5,25 +5,8 @@ import torch
 import requests
 import sys
 import re
-
-
-from transformers import AutoModelForSequenceClassification, AutoTokenizer
-from transformers import TextClassificationPipeline
 import numpy as np
 
-@st.cache_resource
-def load_model():
-  return AutoModelForSequenceClassification.from_pretrained("hersheys-baklava/IsraelPalestine-Bias-Detector")
-
-model = load_model()
-
-@st.cache_resource
-def load_tokenizer():
-  return AutoTokenizer.from_pretrained("bert-base-uncased")
-
-tokenizer = load_tokenizer()
-
-pipe = TextClassificationPipeline(model=model, tokenizer=tokenizer, return_all_scores=True)
 API_KEY = "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"
 head = {"Authorization": f"Bearer {API_KEY}"}
 API_URL = "https://api-inference.huggingface.co/models/hersheys-baklava/IsraelPalestine-Bias-Detector"
