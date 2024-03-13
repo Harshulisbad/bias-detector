@@ -24,7 +24,7 @@ def load_tokenizer():
 tokenizer = load_tokenizer()
 
 pipe = TextClassificationPipeline(model=model, tokenizer=tokenizer, return_all_scores=True)
-API_KEY = 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
+API_KEY = "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"
 head = {"Authorization": f"Bearer {API_KEY}"}
 API_URL = "https://api-inference.huggingface.co/models/hersheys-baklava/IsraelPalestine-Bias-Detector"
 
