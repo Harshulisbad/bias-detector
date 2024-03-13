@@ -24,7 +24,7 @@ def classification(text, out):
   Israel=0
   PalestineM=0
   IsraelM=0
-  classified = query({"inputs": text},options={"wait_for_model":True})
+  classified = query({"inputs": text,options: {wait_for_model: True}})
   scores = [0]*12
   
   for label in classified[0]:
