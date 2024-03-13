@@ -16,10 +16,6 @@ def load_model():
   return AutoModelForSequenceClassification.from_pretrained("hersheys-baklava/IsraelPalestine-Bias-Detector")
 
 model = load_model()
-if model:
-  st.success("got the model")
-else:
-  st.success("no model")
 
 @st.cache_resource
 def load_tokenizer():
@@ -28,6 +24,8 @@ def load_tokenizer():
 tokenizer = load_tokenizer()
 
 pipe = TextClassificationPipeline(model=model, tokenizer=tokenizer, return_all_scores=True)
+if pipe:
+  st.success("got piped")
 
 labels = ['-', "n", "+"] * 4
 op = []
@@ -38,6 +36,7 @@ def classification(text, out):
   Israel=0
   PalestineM=0
   IsraelM=0
+  st.success("got here")
   classified = pipe(text)
   st.success("classified it")
   scores = []
