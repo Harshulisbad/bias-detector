@@ -42,14 +42,37 @@ def classification(text, out):
   PalestineM=0
   IsraelM=0
   classified = query({"inputs": text})
-  scores = []
+  scores = [0]*12
   st.success(classified)
   
   for label in classified[0]:
-    scores.append(label["score"])
+    if label['label'] == "PS0":
+      scores[0] = label['score']
+    elif label['label'] == "PS1":
+      scores[1] = label['score']
+    elif label['label'] == "PS2":
+      scores[2] = label['score']
+    elif label['label'] == "IS0":
+      scores[3] = label['score']
+    elif label['label'] == "IS1":
+      scores[4] = label['score']
+    elif label['label'] == "IS2":
+      scores[5] = label['score']
+    elif label['label'] == "PM0":
+      scores[6] = label['score']
+    elif label['label'] == "PM1":
+      scores[7] = label['score']
+    elif label['label'] == "PM2":
+      scores[8] = label['score']
+    elif label['label'] == "IM0":
+      scores[9] = label['score']
+    elif label['label'] == "IM1":
+      scores[10] = label['score']
+    elif label['label'] == "IM2":
+      scores[11] = label['score']
 
   scores = np.array(scores)
-  print(scores)
+  st.success(scores)
   PS = np.argmax(scores[0:3])
   IS = np.argmax(scores[3:6])
   PM = np.argmax(scores[6:9])
