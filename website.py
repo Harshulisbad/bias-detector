@@ -43,8 +43,8 @@ def classification(text, out):
   st.success("got here")
   classified = query({"inputs": text}
   st.success("classified it")
-  st.success(classified)
   scores = []
+  st.success(classified)
   
   for label in classified[0]:
     scores.append(label["score"])
