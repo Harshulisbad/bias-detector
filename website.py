@@ -25,8 +25,6 @@ def classification(text, out):
   PalestineM=0
   IsraelM=0
   classified = query({"inputs": text, "options": {"wait_for_model": True}})
-  st.success(classified)
-  st.success(type(classified))
   scores = [0]*12
   
   for label in classified[0]:
