@@ -16,6 +16,10 @@ def load_model():
   return AutoModelForSequenceClassification.from_pretrained("hersheys-baklava/IsraelPalestine-Bias-Detector")
 
 model = load_model()
+if model:
+  st.success("got the model")
+else:
+  st.success("no model")
 
 @st.cache_resource
 def load_tokenizer():
@@ -119,7 +123,6 @@ def predict(url, value):
     if (d == level):
       INP = p.get_text().strip()
       if INP != "":
-        st.success("started classifying")
         final=classification(INP, value)
         list1.append(final[0])
         list2.append(final[1])
