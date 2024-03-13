@@ -88,6 +88,7 @@ def predict(url, value):
   totalList=[]
   depths = {}
   page = requests.get(url, headers=headers)
+  st.success("got the site")
   soup = BeautifulSoup(page.content,"html.parser")
   paragraphs = (soup.find_all("p"))
 
