@@ -160,10 +160,10 @@ def predict(url, value):
               #"\nIM: "+str(IsraelM)))"""
 
 def output():
-    st.success("PS: "+str(op[0]))
-    st.success("IS: "+str(op[1]))
-    st.success("PM: "+str(op[2]))
-    st.success("IM: "+str(op[3]))
+    st.success("Palestine Sympathy Bias: "+str(op[0]))
+    st.success("Israel Sympathy Bias: "+str(op[1]))
+    st.success("Palestine Military Bias: "+str(op[2]))
+    st.success("Israel Military Bias: "+str(op[3]))
 
 def main():
   st.image("https://www.economist.com/cdn-cgi/image/width=1424,quality=80,format=auto/content-assets/images/20231021_CUP502.jpg")
@@ -175,6 +175,12 @@ button {
 </style>
   <div style="background-color:#025246 ;padding:10px">
   <h2 style="color:white;text-align:center;">Israeli-Palestine Conflict Bias Detector</h2>
+  </div>
+  <div style="background-color:##d9b99b ;padding:10px";>
+  <h6 style="color:white;text-align:center;">The recent conflicts between Israel and Palestine have highlighted the power of news stations to influence and control public opinion through subtle changes. The topic, while controversial, has become so divisive because of the differing perspectives presented by news stations across the world. In order to filter out the extremely biased articles that only serve to divide public opinion, we, Harshul Basava and Andrew Hu, built this website. Enter a link to a news article below. If it uses Javascript, our tool may not function properly.</h6>
+  </div>
+  <div style="background-color:##d9b99b ;padding:10px";>
+  <h6 style="color:white;text-align:center;">Each score your receive is determined by the positive and negative scores for each paragraph of the article. Positive = +1 and Negative = -1. After all paragraphs are classified, this final score is divided over the total number of paragraphs, resulting in the displayed score. The closer the score is to 0, the more neutral the article is in that aspect. Use this tool as an aid, not as a source of objective truth.</h6>
   </div>
   """
   st.markdown(html_temp, unsafe_allow_html=True)
